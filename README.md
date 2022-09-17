@@ -36,11 +36,19 @@ All code is implemented in the `src/` directory, which includes:
     
     -`VO_adv_project_train_dataset_8_frames_processed/`: preproccesed data for faster loading the next time.
 * `Datasets/`: include methods for preparing the preprocessed datasets, as well as
-backing them up. \
+backing them up. 
 
-* [TartanVO.py](src/TartanVO.py): ITertanVO model implementation used for running the experiments
+* `attacks/`: include different attack methods for the experiments.
+
+    -[attack.py](src/attack.py): Contains all functions needed to run the attacks.
+    -[PGD.py](src/PGD.py): Inhetired class, contains the PGD attack.
+    -[APGD.py](src/APGD.py): Inhetired class, contains the APGD attack.
+
+* [TartanVO.py](src/TartanVO.py): TertanVO model implementation used for running the experiments
 * [run_attacks.py](src/run_attacks.py): Contains high level optimization implementation using CrossValidation and data split to train, evaluation and test sets. 
-* [run_attacks.py](src/run_attacks.py): Contains high level optimization implementation using CrossValidation and data split to train, evaluation and test sets.
+* [loss.py](src/loss.py): Contains loss implementationfor running the experiments.
+* [utils.py](src/utils.py): Contains all arguments options for running the experiments.
+
 
 
 ### Notebooks
