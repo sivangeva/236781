@@ -30,20 +30,18 @@ The synthetic data produced by blender used in Nemcovsky et al.,2022 work was pr
 ### Code
 
 All code is implemented in the `src/` directory, which includes:
-* `models/`: includes the model implementations used for running the experiments: 
-[Baseline (baseline.py)](src/model/baseline.py) for the baseline model, [TCNNet (tcnnet.py)](src/model/tcnnet.py) for
-the Temporal Convolutional model. [Blocks (blocks.py)](src/model/blocks.py) contains useful building blocks
-used inside the model. See the paper for more details on implementation.
+* `models/`: includes the previous weights of TertanVO model implementation used for running the experiments: `tartanvo_1914.pkl`. 
+
 * `data/`: contains dataset used in this project.
-  -`VO_adv_project_train_dataset_8_frames_processed/`: preproccesed data for faster loading the next time.
+    
+    -`VO_adv_project_train_dataset_8_frames_processed/`: preproccesed data for faster loading the next time.
 * `Datasets/`: include methods for preparing the preprocessed datasets, as well as
 backing them up. \
-  All datasets include a `load()` function for preparing the preprocessed datasets, as well as
-backing them up for faster loading the next time. \
-See code for parameters and usage documentation
-* [dsp.py](src/dsp.py): Includes some utility functions used by the `WaveletTransform` module to perform
-signal processing using *scipy* and *pycwt*.
-* [training.py](src/training.py): Contains train/test functions for running the experiments.
+
+* [TartanVO.py](src/TartanVO.py): ITertanVO model implementation used for running the experiments
+* [run_attacks.py](src/run_attacks.py): Contains high level optimization implementation using CrossValidation and data split to train, evaluation and test sets. 
+* [run_attacks.py](src/run_attacks.py): Contains high level optimization implementation using CrossValidation and data split to train, evaluation and test sets.
+
 
 ### Notebooks
 
