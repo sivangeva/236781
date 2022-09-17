@@ -40,8 +40,11 @@ backing them up.
 
 * `attacks/`: include different attack methods for the experiments.
 
+
     -[attack.py](src/attack.py): Contains all functions needed to run the attacks.
+
     -[PGD.py](src/PGD.py): Inhetired class, contains the PGD attack.
+    
     -[APGD.py](src/APGD.py): Inhetired class, contains the APGD attack.
 
 * [TartanVO.py](src/TartanVO.py): TertanVO model implementation used for running the experiments
@@ -50,29 +53,12 @@ backing them up.
 * [utils.py](src/utils.py): Contains all arguments options for running the experiments.
 
 
-
-### Notebooks
-
-This project includes 2 notebooks with several experiments on utilities:
-
-1. [Input.ipynb](src/Input.ipynb): Contains several examples on using the data and Wavelet decomposition implemented 
-in this project
-2. [Model.ipynb](src/Model.ipynb): Contains data loading and train/test experiments for baseline and advanced models.
-
 ## Experiments
 
 The experiments were run on a single-GPU architecture (Nvidia GPU with CUDA).
  
-To reproduce the results, start by running `jupyter-lab` connected to the GPU device.
-
 #### Slurm
-For slurm, you can do this with the following script (`jupyter-lab.sh`):
-```bash
-#!/bin/bash
-unset XDG_RUNTIME_DIR
-jupyter notebook --no-browser --ip=$(hostname -I) --port-retries=100
-```
+For slurm, you can do this with the following command:
 
-Then, summon a job for the notebook: `srun -c2 --gres=gpu:1 --pty ./jupyter-lab.sh`.
+`srun -c 2 --gres=gpu:1 --pty python src/run_attacks.py --seed 42 --model-name tartanvo_1914.pkl --test-dir "VO_adv_project_train_dataset_8_frames"  --max_traj_len 8 --batch-size 1 --worker-num 1 --save_csv --attack pgd --attack_k 100 --attack_oos`.
 
-Experiments with the hyperparameters are available via the `Model` notebook.
